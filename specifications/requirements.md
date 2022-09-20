@@ -4,7 +4,7 @@
 
 ### 1. Preface
 
-Will be implemented an usable prototype of Roleplaying management tool specifically for Ars Magica^:tm: -roleplaying game. Users must be able to create, read, update and delete (CRUD) Character- and Covenant- (player characters residences) sheets. Front-end design will be flexible and scalable for laptops and hand held devices.
+Will be implemented an usable prototype of Roleplaying management tool specifically for Ars Magica^:tm:^ -roleplaying game. Users must be able to create, read, update and delete (CRUD) Character- and Covenant- (player characters residences) sheets. Front-end design will be flexible and scalable for laptops and hand held devices.
 
 ### 2. Description
 
