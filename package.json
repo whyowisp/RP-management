@@ -1,0 +1,29 @@
+{
+  "name": "rp-management",
+  "version": "1.0.0",
+  "description": "Fullstack project for University of Helsinki, Fullstack open 2022 - course ",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whyowisp/RP-management.git"
+  },
+  "author": "Mikko Sipola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whyowisp/RP-management/issues"
+  },
+  "homepage": "https://github.com/whyowisp/RP-management#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
