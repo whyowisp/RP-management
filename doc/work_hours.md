@@ -1,5 +1,7 @@
 # työaikakirjanpito
 
+*Koska projektin frontti ja bäkki ovat eri repositorioissa, molemmille on oma kirjanpitonsa, jotka lopuksi yhdistetään bäkkirepositoriossa.*
+
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
 |10.9.| 5h |Alustava suunnittelu/ideointi|
