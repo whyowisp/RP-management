@@ -7,6 +7,10 @@
 | 10.9.| 4h | Alustava suunnittelu/ideointi |
 | 11.9 | 2h | Perehtyminen Material UI |
 | 19.9 | 1h | Suunnittelua |
-| 20.9 | 6h | Vaatimusmäärittely, Projektin alustus, Git, testiympäristö, etc. |
-| 21.9 | 2h | Mongoosen käyttöönottoa, mongo schema, perehtymistä, testailua |
-|sub total| 14h ||
+| 20.9 | 6h | Vaatimusmäärittely, Projektin alustus, Git, testiympäristön pystystä, etc. |
+| 21.9 | 2h | Mongoosen käyttöönottoa, mongo schema, perehtymistä, kokeilua |
+| 22.9 | 3h | Testiympäristön käyttöönottoa, testien kirjoittamista |
+| 23.9 | 3h | requestien ja testien kirjoittamista, mongoose alidokumenttien kanssa kikkailua |
+| 24.9 | 3h | character scheman ja requestien valmiiksi saattaminen + 1 uusi testi |
+|sub total | 24h ||
+||||
