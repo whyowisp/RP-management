@@ -11,6 +11,6 @@
 | 21.9 | 2h | Mongoosen käyttöönottoa, mongo schema, perehtymistä, kokeilua |
 | 22.9 | 3h | Testiympäristön käyttöönottoa, testien kirjoittamista |
 | 23.9 | 3h | requestien ja testien kirjoittamista, mongoose alidokumenttien kanssa kikkailua |
-| 24.9 | 3h | character scheman ja requestien valmiiksi saattaminen + 1 uusi testi |
-|sub total | 24h ||
-||||
+| 24.9 | 4h | character scheman ja requestien valmiiksi saattaminen + 1 uusi testi, refaktorointia |
+|sub total | 25 h ||
+| 7.10 | 1h | Perehtyminen fly.io ja demo |

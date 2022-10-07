@@ -11,12 +11,12 @@ characteristicTitles = [
   'Quickness',
 ]
 
-const descriptiveStatTitles = [
+const descriptiveAttributesTitles = [
   'Birth Name',
   'Year Born',
   'Gender',
   'Race/Nationality',
-  'PlaceOfOrigin',
+  'Place Of Origin',
   'Religion',
   'Title/Profession',
   'Height',
@@ -53,9 +53,9 @@ const initializeCharacterData = () => {
       score: Number,
     })
   )
-  descriptiveStatTitles.map((dStatTitle) =>
-    character.descriptiveStats.push({
-      stat: dStatTitle,
+  descriptiveAttributesTitles.map((dAttributeTitle) =>
+    character.descriptiveAttributes.push({
+      attribute: dAttributeTitle,
       description: String,
     })
   )

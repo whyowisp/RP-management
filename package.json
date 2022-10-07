@@ -27,7 +27,8 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "mongoose": "^6.6.1"
+    "mongoose": "^6.6.1",
+    "nvm": "^0.0.4"
   },
   "devDependencies": {
     "eslint": "^8.23.1",

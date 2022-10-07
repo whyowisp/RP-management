@@ -13,17 +13,16 @@ const characterSchema = new Schema(
     setting: String,
     currentYear: Number,
     house: String,
+    age: String,
     size: Number,
     confidence: Number,
     decrepitude: {
-      score: Number,
       effectsOfAging: [String],
     },
     warping: {
-      score: Number,
-      effectsOfAging: [String],
+      effectsOfWarping: [String],
     },
-    descriptiveStats: [], //*
+    descriptiveAttributes: [], //*
     characteristics: [], //*
     virtues: [String],
     flaws: [String],

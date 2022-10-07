@@ -4,13 +4,14 @@ const app = require('../app')
 
 const helper = require('../utils/test_helper')
 const Character = require('../models/character')
+
 const api = supertest(app)
 
 describe('standard GET tests', () => {
   beforeEach(async () => {
     await Character.deleteMany({})
     const characterObjects = helper.characters.map(
-      (character) => new Character(character)
+      (character) => new Character(character),
     )
     await Character.bulkSave(characterObjects)
   })
@@ -35,7 +36,7 @@ describe('POST tests', () => {
       .expect(201)
       .expect('Content-Type', /application\/json/)
     const characteristic = res.body.characteristics.find(
-      (c) => c === 'Intelligence'
+      (c) => c === 'Intelligence',
     )
     expect(characteristic).toContain('Intelligence')
   })
@@ -45,7 +46,7 @@ describe('PUT tests', () => {
   beforeEach(async () => {
     await Character.deleteMany({})
     const characterObjects = helper.characters.map(
-      (character) => new Character(character)
+      (character) => new Character(character),
     )
     await Character.bulkSave(characterObjects)
   })
@@ -72,7 +73,7 @@ describe('PUT tests', () => {
       .send(data)
       .expect(201)
   })
-  //This test doesn't work yet. It passes but i know it´s shouldn't
+  // This test doesn't work yet. It passes but i know it´s shouldn't
   test('editing non-existing property returns 405', async () => {
     const id = await helper.getId()
     api
