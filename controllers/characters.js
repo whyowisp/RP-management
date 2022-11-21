@@ -4,6 +4,12 @@ const { initializeCharacterData } = require('../utils/dataInitializers')
 
 // const requestHistory = []
 
+characterRouter.get('/:id', async (req, res) => {
+  const character = await Character.findById(id)
+  console.log(character)
+  res.json(character)
+})
+
 characterRouter.get('/', async (req, res) => {
   const characters = await Character.find({})
   // console.log(characters)
@@ -31,6 +37,12 @@ characterRouter.put('/:id', async (req, res) => {
 characterRouter.delete('/:id', async (req, res) => {
   const { id } = req.params
   await Character.findByIdAndDelete(id)
+  res.status(204).end()
+})
+
+// Caution! removes all data
+characterRouter.delete('/', async (req, res) => {
+  await Character.deleteMany()
   res.status(204).end()
 })
 

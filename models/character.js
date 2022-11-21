@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const { Schema } = mongoose
 
 const characterSchema = new Schema(
@@ -6,8 +7,8 @@ const characterSchema = new Schema(
     character: String,
     player: {
       type: String,
-      //type: mongoose.Schema.Types.ObjectId,
-      //ref: 'Player',
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref: 'Player',
     },
     saga: String,
     setting: String,
@@ -27,22 +28,27 @@ const characterSchema = new Schema(
     virtues: [String],
     flaws: [String],
     abilities: [
-      { experience: Number, ability: String, specialty: String, score: Number },
+      {
+        experience: Number,
+        ability: String,
+        specialty: String,
+        score: Number,
+      },
     ],
     personalityTraits: [{ description: String, score: Number }],
-    //type is reserved word but here's workaround
-    reputation: [
+    // type is reserved word but here's workaround
+    reputations: [
       { description: String, type: { type: String }, score: Number },
     ],
     combat: {
-      armor: String,
-      modifiers: [{}], //OBS OBS OBS!!!
-      soak: Number,
-      load: Number,
+      armor: { type: String, default: '' },
+      modifiers: { type: String, default: '' },
+      soak: { type: Number, default: 0 },
+      load: { type: Number, default: 0 },
     },
-    fatigue: { value: Number, content: [] }, //*
-    wounds: { value: Number, content: [] }, //*
-    //Change weapon property later as { type: mongoose.Schema.Types.ObjectId, ref: 'Weapon'},
+    fatigue: [],
+    wounds: [],
+    // Change weapon property later as { type: mongoose.Schema.Types.ObjectId, ref: 'Weapon'},
     weapons: [
       {
         weapon: String,
@@ -51,14 +57,52 @@ const characterSchema = new Schema(
         defenseModifier: Number,
         damageModifier: Number,
         load: Number,
-        Range: Number,
+        range: Number,
       },
     ],
     equipment: [{ item: String, load: Number }],
+    //magi data start
+    house: String,
+    covenant: String,
+    sigil: String,
+    domus: String,
+    primus: String,
+    parens: String,
+    covenOfApprenticeship: String,
+    depiction: { depiction: String, notes: String },
+    magicalArts: [],
+    castingTotals: [Number],
+    lab: Number,
+    longevity: {
+      labTotal: Number,
+      ageRollModifier: Number,
+      twilightScars: String,
+    },
+    vis: [{ art: String, pawns: Number, physicalForm: String }],
+    familiar: {
+      characteristics: [],
+      stats: [],
+      cords: { bronze: Number, silver: Number, gold: Number },
+      bondQAndA: [String],
+    },
+    spells: [
+      {
+        spell: String,
+        form: String,
+        technique: String,
+        level: Number,
+        bonus: String, //Note! String or Number???
+        range: String,
+        duration: String,
+        target: String,
+        exp: Number,
+        mastery: Number,
+        notes: String,
+      },
+    ],
   },
+
   { strict: 'throw' }
 )
-
-// *)To be initialized with utils/dataInitializers in document creation
 
 module.exports = mongoose.model('Character', characterSchema)

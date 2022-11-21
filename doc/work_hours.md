@@ -14,3 +14,4 @@
 | 24.9 | 4h | character scheman ja requestien valmiiksi saattaminen + 1 uusi testi, refaktorointia |
 |sub total | 25 h ||
 | 7.10 | 1h | Perehtyminen fly.io ja demo |
+| 8.10 - 16.10 | 1h | randomly working with character data |

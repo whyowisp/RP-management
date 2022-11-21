@@ -1,4 +1,4 @@
-# fly.toml file generated for rpmtool on 2022-10-07T12:25:16+03:00
+# fly.toml file generated for rpmtool on 2022-10-08T16:21:32+03:00
 
 app = "rpmtool"
 kill_signal = "SIGINT"

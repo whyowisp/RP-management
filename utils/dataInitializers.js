@@ -43,9 +43,48 @@ const woundDataRow = [
   { title: 'Dead' },
 ]
 
+const magicArtsRow = [
+  'Creo',
+  'Intellego',
+  'Muto',
+  'Perdo',
+  'Rego',
+  'Animal',
+  'Aquam',
+  'Auram',
+  'Corpus',
+  'Herbam',
+  'Ignem',
+  'Imaginem',
+  'Mentem',
+  'Terram',
+  'Vim',
+]
+
+const familiarCharacteristicsRow = [
+  'Int/Cun',
+  'Per',
+  'Str',
+  'Sta',
+  'Pre',
+  'Com',
+  'Dex',
+  'Qik',
+]
+
+const familiarStatsRow = [
+  'Size',
+  'Might',
+  'Soak',
+  'Fat',
+  'Init',
+  'Atk',
+  'Dfn',
+  'Dam',
+]
+
 const initializeCharacterData = () => {
   const character = new Character({})
-
   characteristicTitles.map((cTitle) =>
     character.characteristics.push({
       characteristic: cTitle,
@@ -60,20 +99,41 @@ const initializeCharacterData = () => {
     })
   )
   fatigueDataRow.map((fData) => {
-    character.fatigue.content.push({
+    character.fatigue.push({
+      checked: false,
       penalty: fData.penalty,
       recovery: fData.recovery,
       level: fData.title,
     })
   })
   woundDataRow.map((wData) => {
-    character.wounds.content.push({
+    character.wounds.push({
       level: wData.title,
       range: String,
+      checked: [false, false, false, false, false],
       penalty: wData.penalty,
       notes: String,
     })
   })
+  magicArtsRow.map((mArt) =>
+    character.magicalArts.push({
+      exp: Number,
+      art: mArt,
+      score: Number,
+    })
+  )
+  familiarCharacteristicsRow.map((fChr) =>
+    character.familiar.characteristics.push({
+      characteristic: fChr,
+      score: Number,
+    })
+  )
+  familiarStatsRow.map((fStat) =>
+    character.familiar.stats.push({
+      stat: fStat,
+      score: Number,
+    })
+  )
   return character
 }
 

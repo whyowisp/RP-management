@@ -3,7 +3,7 @@
 Author: Mikko Sipola
 Repository started: 20.09.2022
 
-*This repository contains app's NodeJS backend service + front build version. Please visit ---- for frontend repo* 
+*This repository contains app's NodeJS backend service + front build version. Please visit* [https://github.com/whyowisp/rpmt-front](https://github.com/whyowisp/rpmt-front) *for frontend repo*
 
 ## Is what?
 
