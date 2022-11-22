@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
-
 const { Schema } = mongoose
 
 const playerSchema = new Schema(
   {
     name: String,
-    alias: String,
+    alias: { type: String, unique: true },
     passwordHash: String,
   },
 )

@@ -8,7 +8,7 @@ playerRouter.get('/', async (req, res) => {
 })
 
 playerRouter.post('/new', async (req, res) => {
-    const { name, alias, password } = req.body
+  const { name, alias, password } = req.body
 
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(password, saltRounds)
@@ -18,6 +18,11 @@ playerRouter.post('/new', async (req, res) => {
     alias,
     passwordHash,
   })
+
+  const existingAlias = await Player.findOne({ alias })
+  if (existingAlias) {
+    res.status(400).json('error: Player alias is already taken')
+  }
 
   const savedPlayer = await player.save()
   res.status(201).json(savedPlayer)
