@@ -1,6 +1,6 @@
 const Character = require('../models/character')
 
-characteristicTitles = [
+const characteristicTitles = [
   'Intelligence',
   'Perception',
   'Strength',
@@ -85,20 +85,16 @@ const familiarStatsRow = [
 
 const initializeCharacterData = () => {
   const character = new Character({})
-  characteristicTitles.map((cTitle) =>
-    character.characteristics.push({
-      characteristic: cTitle,
-      description: String,
-      score: Number,
-    })
-  )
-  descriptiveAttributesTitles.map((dAttributeTitle) =>
-    character.descriptiveAttributes.push({
-      attribute: dAttributeTitle,
-      description: String,
-    })
-  )
-  fatigueDataRow.map((fData) => {
+  characteristicTitles.map((cTitle) => character.characteristics.push({
+    characteristic: cTitle,
+    description: String,
+    score: Number,
+  }))
+  descriptiveAttributesTitles.map((dAttributeTitle) => character.descriptiveAttributes.push({
+    attribute: dAttributeTitle,
+    description: String,
+  }))
+  fatigueDataRow.forEach((fData) => {
     character.fatigue.push({
       checked: false,
       penalty: fData.penalty,
@@ -106,7 +102,7 @@ const initializeCharacterData = () => {
       level: fData.title,
     })
   })
-  woundDataRow.map((wData) => {
+  woundDataRow.forEach((wData) => {
     character.wounds.push({
       level: wData.title,
       range: String,
@@ -115,25 +111,19 @@ const initializeCharacterData = () => {
       notes: String,
     })
   })
-  magicArtsRow.map((mArt) =>
-    character.magicalArts.push({
-      exp: Number,
-      art: mArt,
-      score: Number,
-    })
-  )
-  familiarCharacteristicsRow.map((fChr) =>
-    character.familiar.characteristics.push({
-      characteristic: fChr,
-      score: Number,
-    })
-  )
-  familiarStatsRow.map((fStat) =>
-    character.familiar.stats.push({
-      stat: fStat,
-      score: Number,
-    })
-  )
+  magicArtsRow.map((mArt) => character.magicalArts.push({
+    exp: Number,
+    art: mArt,
+    score: Number,
+  }))
+  familiarCharacteristicsRow.map((fChr) => character.familiar.characteristics.push({
+    characteristic: fChr,
+    score: Number,
+  }))
+  familiarStatsRow.map((fStat) => character.familiar.stats.push({
+    stat: fStat,
+    score: Number,
+  }))
   return character
 }
 

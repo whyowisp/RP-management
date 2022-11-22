@@ -5,8 +5,10 @@ const config = require('./utils/config')
 
 const { requestLogger, unknownEndpoint } = require('./utils/middleware')
 const characterRouter = require('./controllers/characters')
+const playerRouter = require('./controllers/players')
 
-// PORT in production (fly chooses) || PORT in local environment (falls to this unless defined in process.env)
+// PORT in production (fly chooses) || PORT in local environment
+// (falls to this unless defined in process.env)
 const PORT = process.env.PORT || 4000
 
 const app = express()
@@ -26,6 +28,7 @@ mongoose
     console.log('error connecting to MongoDB:', error.message)
   })
 
+app.use('/api/players', playerRouter)
 app.use('/api/characters', characterRouter)
 
 app.use(unknownEndpoint)

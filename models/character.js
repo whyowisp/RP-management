@@ -61,7 +61,7 @@ const characterSchema = new Schema(
       },
     ],
     equipment: [{ item: String, load: Number }],
-    //magi data start
+    // magi data start
     house: String,
     covenant: String,
     sigil: String,
@@ -91,7 +91,7 @@ const characterSchema = new Schema(
         form: String,
         technique: String,
         level: Number,
-        bonus: String, //Note! String or Number???
+        bonus: String, // Note! String or Number???
         range: String,
         duration: String,
         target: String,
@@ -102,7 +102,7 @@ const characterSchema = new Schema(
     ],
   },
 
-  { strict: 'throw' }
+  { strict: 'throw' },
 )
 
 module.exports = mongoose.model('Character', characterSchema)
