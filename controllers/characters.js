@@ -19,7 +19,6 @@ characterRouter.get('/', async (req, res) => {
 
 // Initializes and prefills new Character document and returns it
 characterRouter.post('/new', async (req, res) => {
-
   const player = await Player.findById(req.body.playerId)
   const character = await initializeCharacterData(player._id)
 

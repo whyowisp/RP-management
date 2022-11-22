@@ -4,7 +4,7 @@ const { Schema } = mongoose
 
 const playerSchema = new Schema(
   {
-    name: String,
+    username: String,
     alias: { type: String, unique: true },
     passwordHash: String,
   },
