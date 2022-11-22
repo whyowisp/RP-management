@@ -83,8 +83,9 @@ const familiarStatsRow = [
   'Dam',
 ]
 
-const initializeCharacterData = () => {
+const initializeCharacterData = (playerId) => {
   const character = new Character({})
+  character.owner = playerId
   characteristicTitles.map((cTitle) => character.characteristics.push({
     characteristic: cTitle,
     description: String,

@@ -21,7 +21,7 @@ playerRouter.post('/new', async (req, res) => {
 
   const existingAlias = await Player.findOne({ alias })
   if (existingAlias) {
-    res.status(400).json('error: Player alias is already taken')
+    res.status(400).json('error: player alias is already taken')
   }
 
   const savedPlayer = await player.save()

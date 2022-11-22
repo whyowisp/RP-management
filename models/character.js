@@ -1,15 +1,16 @@
 const mongoose = require('mongoose')
+const Player = require('./player')
 
 const { Schema } = mongoose
 
 const characterSchema = new Schema(
   {
-    character: String,
-    player: {
-      type: String,
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: 'Player',
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Player,
     },
+    character: String,
+    player: String,
     saga: String,
     setting: String,
     currentYear: Number,

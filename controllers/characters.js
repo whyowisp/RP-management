@@ -1,5 +1,6 @@
 const characterRouter = require('express').Router()
 const Character = require('../models/character')
+const Player = require('../models/player')
 const { initializeCharacterData } = require('../utils/dataInitializers')
 
 // const requestHistory = []
@@ -18,8 +19,11 @@ characterRouter.get('/', async (req, res) => {
 
 // Initializes and prefills new Character document and returns it
 characterRouter.post('/new', async (req, res) => {
-  const character = initializeCharacterData()
-  // console.log(character)
+
+  const player = await Player.findById(req.body.playerId)
+  const character = await initializeCharacterData(player._id)
+
+  console.log(character)
   const newCharacter = await character.save()
   res.status(201).json(newCharacter)
 })
