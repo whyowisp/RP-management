@@ -9,6 +9,7 @@ const characterSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: Player,
     },
+    visibility: {type:String, default: 'visible'},
     character: String,
     player: String,
     saga: String,

@@ -19,10 +19,11 @@ characterRouter.get('/', async (req, res) => {
 
 // Initializes and prefills new Character document and returns it
 characterRouter.post('/new', async (req, res) => {
+  console.log(req.body.playerId)
   const player = await Player.findById(req.body.playerId)
-  const character = await initializeCharacterData(player._id)
+  const character = await initializeCharacterData(player.id)
 
-  console.log(character)
+  //console.log(character)
   const newCharacter = await character.save()
   res.status(201).json(newCharacter)
 })
@@ -33,7 +34,7 @@ characterRouter.put('/:id', async (req, res) => {
   const updatedCharacter = await Character.findByIdAndUpdate(id, req.body, {
     new: true,
   })
-  res.status(200).json(updatedCharacter) // probably client does´nt need to know
+  res.status(200).json(updatedCharacter) // probably client doesn't need to know
   // console.log('requestHistory: ' + JSON.stringify(requestHistory))
 })
 

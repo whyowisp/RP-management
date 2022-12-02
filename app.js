@@ -3,14 +3,14 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const config = require('./utils/config')
 
-const { requestLogger, unknownEndpoint } = require('./utils/middleware')
+const { requestLogger, unknownEndpoint, errorHandler } = require('./utils/middleware')
 const characterRouter = require('./controllers/characters')
 const playerRouter = require('./controllers/players')
 const loginRouter = require('./controllers/login')
 
 // PORT in production (fly chooses) || PORT in local environment
 // (falls to this unless defined in process.env)
-const PORT = process.env.PORT || 4000
+//const PORT = process.env.PORT || 4000
 
 const app = express()
 
@@ -34,5 +34,6 @@ app.use('/api/characters', characterRouter)
 app.use('/api/login', loginRouter)
 
 app.use(unknownEndpoint)
+app.use(errorHandler)
 
 module.exports = app

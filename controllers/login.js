@@ -16,9 +16,9 @@ loginRouter.post('/', async (req, res) => {
     })
   }
 
-  //Authentication implementation here
+  // Authentication implementation here
 
-  res.status(200).send({ username: player.username, alias: player.alias})
+  res.status(200).send({ username: player.username, alias: player.alias, id: player.id })
 })
 
 module.exports = loginRouter
