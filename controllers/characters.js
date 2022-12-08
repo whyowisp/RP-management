@@ -34,7 +34,7 @@ characterRouter.put('/:id', async (req, res) => {
   const updatedCharacter = await Character.findByIdAndUpdate(id, req.body, {
     new: true,
   })
-  res.status(200).json(updatedCharacter) // probably client doesn't need to know
+  res.status(200).json(updatedCharacter)
   // console.log('requestHistory: ' + JSON.stringify(requestHistory))
 })
 

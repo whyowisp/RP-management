@@ -17,3 +17,4 @@
 | 8.10 - 16.10 | 1h | randomly working with character data |
 | 22.11 | 5h | player (user) toimintojen implementointia |
 | 02.12 | 1h | basic error handling |
+| 08.12 | 3h | more error handling (with mongoose unique validator) |
