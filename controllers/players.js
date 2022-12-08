@@ -10,7 +10,8 @@ playerRouter.get('/', async (req, res) => {
 playerRouter.post('/new', async (req, res) => {
   const { username, alias, password } = req.body.credentials
 
-
+  if (!password) res.status(400).send('Error: Password required')
+  if (password.length < 8) res.status(400).send('Error: Provided too short password')
 
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(password, saltRounds)
@@ -20,17 +21,12 @@ playerRouter.post('/new', async (req, res) => {
     alias,
     passwordHash,
   })
-/*
-  const existingAlias = await Player.findOne({ alias })
-  if (existingAlias) {
-    res.status(400).send({ error: 'player alias is already taken' })
-  }*/
 
   try {
-      const savedPlayer = await player.save()
+    const savedPlayer = await player.save()
     res.status(201).json(savedPlayer)
   } catch (err) {
-      res.status(400).json(err.errors)
+    res.status(400).json(err.errors)
   }
 })
 

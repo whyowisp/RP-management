@@ -23,7 +23,7 @@ characterRouter.post('/new', async (req, res) => {
   const player = await Player.findById(req.body.playerId)
   const character = await initializeCharacterData(player.id)
 
-  //console.log(character)
+  // console.log(character)
   const newCharacter = await character.save()
   res.status(201).json(newCharacter)
 })
