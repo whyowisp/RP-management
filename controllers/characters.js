@@ -6,7 +6,7 @@ const { initializeCharacterData } = require('../utils/dataInitializers')
 // const requestHistory = []
 
 characterRouter.get('/:id', async (req, res) => {
-  const character = await Character.findById(id)
+  const character = await Character.findById(req.body.id)
   console.log(character)
   res.json(character)
 })

@@ -7,6 +7,7 @@ const { requestLogger, unknownEndpoint, errorHandler } = require('./utils/middle
 const characterRouter = require('./controllers/characters')
 const playerRouter = require('./controllers/players')
 const loginRouter = require('./controllers/login')
+const campaignRouter = require('./controllers/campaigns')
 
 // PORT in production (fly chooses) || PORT in local environment
 // (falls to this unless defined in process.env)
@@ -32,6 +33,7 @@ mongoose
 app.use('/api/players', playerRouter)
 app.use('/api/characters', characterRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/campaigns', campaignRouter)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

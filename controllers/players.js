@@ -10,8 +10,7 @@ playerRouter.get('/', async (req, res) => {
 playerRouter.post('/new', async (req, res) => {
   const { username, alias, password } = req.body.credentials
 
-  if (!password) res.status(400).send('Error: Password required')
-  if (password.length < 8) res.status(400).send('Error: Provided too short password')
+  if (password.length < 8) res.status(400).send('Error: Password either too short or non-existing')
 
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(password, saltRounds)
