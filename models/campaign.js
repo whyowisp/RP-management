@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-const Player = require('./player')
-const Character = require('./character')
 // const Covenant = require('./covenant')
 
 const { Schema } = mongoose
@@ -8,16 +6,20 @@ const { Schema } = mongoose
 const campaignSchema = new Schema({
   title: String,
   game: String,
-  started: Date,
-  status: { type: String, enum: ['active', 'closed'], default: 'active' },
+  started: { type: Date, default: Date.now },
+  status: {
+    type: String,
+    enum: ['active', 'closed'],
+    default: 'active',
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: Player,
+    ref: 'Player',
   },
   players: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Player,
+      ref: 'Player',
       permissions: {
         type: String,
         enum: ['all', 'limited', 'none'], // Check
@@ -28,7 +30,7 @@ const campaignSchema = new Schema({
   characters: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Character,
+      ref: 'Character',
     },
   ],
   /* factions: [

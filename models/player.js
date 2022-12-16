@@ -3,13 +3,19 @@ const uniqueValidator = require('mongoose-unique-validator')
 
 const { Schema } = mongoose
 
-const playerSchema = new Schema(
-  {
-    username: { type: String, required: true, minlength: 5 },
-    alias: { type: String, unique: true, required: [true, 'Error: Alias must be provided'] },
-    passwordHash: { type: String, required: true },
+const playerSchema = new Schema({
+  username: { type: String, required: true, minlength: 5 },
+  alias: {
+    type: String,
+    unique: true,
+    required: [true, 'Error: Alias must be provided'],
   },
-)
+  passwordHash: { type: String, required: true },
+  currentCampaign: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Campaign',
+  },
+})
 
 playerSchema.plugin(uniqueValidator)
 

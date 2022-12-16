@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Player = require('./player')
 
 const { Schema } = mongoose
 
@@ -7,7 +6,7 @@ const characterSchema = new Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: Player,
+      ref: 'Player',
     },
     visibility: { type: String, default: 'visible' },
     character: String,
@@ -104,7 +103,7 @@ const characterSchema = new Schema(
     ],
   },
 
-  { strict: 'throw' },
+  { strict: 'throw' }
 )
 
 module.exports = mongoose.model('Character', characterSchema)

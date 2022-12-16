@@ -10,16 +10,25 @@ campaignRouter.get('/:id', async (req, res) => {
 })
 
 campaignRouter.get('/', async (req, res) => {
-  const campaigns = await Campaign.find({})
+  const campaigns = await Campaign.find({}).populate('owner')
   console.log(campaigns)
   res.json(campaigns)
 })
 
 campaignRouter.post('/new', async (req, res) => {
-  //Make some checks
-  const player = await Player.findById(req.body.userId)
+  const { title, game, playerId } = req.body
+
+  if (!title || !game || !playerId) {
+    return res.status(401).json({
+      error: `request missing data, request body: ${JSON.stringify(req.body)}`,
+    })
+  }
+
+  const player = await Player.findById(playerId)
   const newCampaign = new Campaign({
     owner: player.id,
+    game: game,
+    title: title,
   })
 
   const campaign = await newCampaign.save()
