@@ -18,8 +18,10 @@ const campaignSchema = new Schema({
   },
   players: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Player',
+      //Note! In this app players does not need to refer player MongooseObject
+      id: String,
+      username: String,
+      alias: String,
       permissions: {
         type: String,
         enum: ['all', 'limited', 'none'], // Check
@@ -53,7 +55,6 @@ campaignSchema.set('toJSON', {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
-    delete returnedObject.passwordHash
     /* eslint-enable */
   },
 })

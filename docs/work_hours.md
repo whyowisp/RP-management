@@ -18,3 +18,4 @@
 | 22.11 | 5h | player (user) toimintojen implementointia |
 | 02.12 | 1h | basic error handling |
 | 08.12 | 4h | more error handling (also with mongoose unique validator) |
+| 28.12 | 1/2h | Faction model/controller minimalistic versions |
