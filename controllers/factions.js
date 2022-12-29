@@ -1,5 +1,6 @@
 const factionRouter = require('express').Router()
 const Faction = require('../models/faction')
+const Campaign = require('../models/campaign')
 
 factionRouter.get('/:id', async (req, res) => {
   const faction = await Faction.findById(req.body.id)
@@ -8,23 +9,23 @@ factionRouter.get('/:id', async (req, res) => {
 })
 
 factionRouter.get('/', async (req, res) => {
-  const campaigns = await Faction.find({}).populate('character')
-  console.log(campaigns)
-  res.json(campaigns)
+  const factions = await Faction.find({}).populate('character')
+  console.log(factions)
+  res.json(factions)
 })
 
 factionRouter.post('/new', async (req, res) => {
-  const { title, game, CampaignId } = req.body
+  const { title, campaignId } = req.body
 
-  if (!title || !game || !CampaignId) {
+  if (!title || !campaignId) {
     return res.status(401).json({
       error: `request missing data, request body: ${JSON.stringify(req.body)}`,
     })
   }
 
-  const Campaign = await Campaign.findById(CampaignId)
+  const campaign = await Campaign.findById(campaignId)
   const newFaction = new Faction({
-    campaign: Campaign.id,
+    campaign: campaign.id,
     title: title,
   })
 

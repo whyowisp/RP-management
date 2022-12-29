@@ -2,13 +2,12 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const factionSchema = new Schema({
+  campaign: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Campaign',
+  },
   title: String,
-  characters: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Character',
-    },
-  ],
+  description: String,
 })
 
 factionSchema.set('toJSON', {

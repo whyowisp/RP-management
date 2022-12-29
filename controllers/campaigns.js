@@ -1,5 +1,6 @@
 const campaignRouter = require('express').Router()
 const Campaign = require('../models/campaign')
+//const Faction = require('../models/faction')
 const Character = require('../models/character')
 const Player = require('../models/player')
 

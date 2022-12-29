@@ -19,3 +19,4 @@
 | 02.12 | 1h | basic error handling |
 | 08.12 | 4h | more error handling (also with mongoose unique validator) |
 | 28.12 | 1/2h | Faction model/controller minimalistic versions |
+| 29.12 | 1/2h | Faction controller update |

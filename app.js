@@ -39,7 +39,7 @@ app.use('/api/players', playerRouter)
 app.use('/api/characters', characterRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/campaigns', campaignRouter)
-app.use('./api/factions', factionRouter)
+app.use('/api/factions', factionRouter)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

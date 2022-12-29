@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-// const Covenant = require('./covenant')
 
 const { Schema } = mongoose
 
@@ -35,12 +34,12 @@ const campaignSchema = new Schema({
       ref: 'Character',
     },
   ],
-  /* factions: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Faction,
-      },
-    ], */
+  factions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Faction',
+    },
+  ],
   /* covenants: [
         {
             type: mongoose.Schema.Types.ObjectId,
