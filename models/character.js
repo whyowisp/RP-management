@@ -8,10 +8,18 @@ const characterSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Player',
     },
+    campaign: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Campaign',
+    },
+    faction: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Faction',
+    },
     visibility: { type: String, default: 'visible' },
     character: String,
     player: String,
-    saga: String,
+    saga: String, //This could be changed to campaign
     setting: String,
     currentYear: Number,
     house: String,

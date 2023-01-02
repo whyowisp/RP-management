@@ -8,6 +8,16 @@ const factionSchema = new Schema({
   },
   title: String,
   description: String,
+  currentLeader: String,
+  factionType: {
+    type: String,
+    enum: ['regular', 'covenant'],
+    default: 'regular',
+  },
+  /*covenant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Covenant',
+  },*/
 })
 
 factionSchema.set('toJSON', {

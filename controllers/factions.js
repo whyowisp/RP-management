@@ -2,22 +2,28 @@ const factionRouter = require('express').Router()
 const Faction = require('../models/faction')
 const Campaign = require('../models/campaign')
 
+//Get one
 factionRouter.get('/:id', async (req, res) => {
   const faction = await Faction.findById(req.body.id)
-  console.log(faction)
   res.json(faction)
 })
 
-factionRouter.get('/', async (req, res) => {
-  const factions = await Faction.find({}).populate('character')
-  console.log(factions)
+//Get all by campaignId
+factionRouter.get('/byCampaignId/:id', async (req, res) => {
+  const factions = await Faction.find({ campaign: req.params.id })
+  res.json(factions)
+})
+
+//Get all
+factionRouter.get('/all', async (req, res) => {
+  const factions = await Faction.find({})
   res.json(factions)
 })
 
 factionRouter.post('/new', async (req, res) => {
-  const { title, campaignId } = req.body
+  const { campaignId, title, factionType } = req.body
 
-  if (!title || !campaignId) {
+  if (!campaignId) {
     return res.status(401).json({
       error: `request missing data, request body: ${JSON.stringify(req.body)}`,
     })
@@ -27,6 +33,7 @@ factionRouter.post('/new', async (req, res) => {
   const newFaction = new Faction({
     campaign: campaign.id,
     title: title,
+    factionType: factionType,
   })
 
   const faction = await newFaction.save()
@@ -42,13 +49,11 @@ factionRouter.put('/:id', async (req, res) => {
   // console.log('requestHistory: ' + JSON.stringify(requestHistory))
 })
 
-/*
 factionRouter.delete('/:id', async (req, res) => {
-    const { id } = req.params
+  const { id } = req.params
   await Faction.findByIdAndDelete(id)
   res.status(204).end()
 })
-*/
 
 // Caution! removes all data
 factionRouter.delete('/', async (req, res) => {

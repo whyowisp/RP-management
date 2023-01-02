@@ -1,4 +1,5 @@
 const characterRouter = require('express').Router()
+const Campaign = require('../models/campaign')
 const Character = require('../models/character')
 const Player = require('../models/player')
 const { initializeCharacterData } = require('../utils/dataInitializers')
@@ -17,11 +18,17 @@ characterRouter.get('/', async (req, res) => {
   res.json(characters)
 })
 
+//Get all by campaignId
+characterRouter.get('/byCampaignId/:id', async (req, res) => {
+  const characters = await Character.find({ campaign: req.params.id })
+  res.json(characters)
+})
+
 // Initializes and prefills new Character document and returns it
 characterRouter.post('/new', async (req, res) => {
-  console.log(req.body.playerId)
   const player = await Player.findById(req.body.playerId)
-  const character = await initializeCharacterData(player.id)
+  const campaign = await Campaign.findById(req.body.campaignId)
+  const character = await initializeCharacterData(player.id, campaign.id)
 
   // console.log(character)
   const newCharacter = await character.save()

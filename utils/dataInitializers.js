@@ -83,18 +83,23 @@ const familiarStatsRow = [
   'Dam',
 ]
 
-const initializeCharacterData = (playerId) => {
+const initializeCharacterData = (playerId, campaignId) => {
   const character = new Character({})
   character.owner = playerId
-  characteristicTitles.map((cTitle) => character.characteristics.push({
-    characteristic: cTitle,
-    description: String,
-    score: Number,
-  }))
-  descriptiveAttributesTitles.map((dAttributeTitle) => character.descriptiveAttributes.push({
-    attribute: dAttributeTitle,
-    description: String,
-  }))
+  character.campaign = campaignId
+  characteristicTitles.map((cTitle) =>
+    character.characteristics.push({
+      characteristic: cTitle,
+      description: String,
+      score: Number,
+    })
+  )
+  descriptiveAttributesTitles.map((dAttributeTitle) =>
+    character.descriptiveAttributes.push({
+      attribute: dAttributeTitle,
+      description: String,
+    })
+  )
   fatigueDataRow.forEach((fData) => {
     character.fatigue.push({
       checked: false,
@@ -112,19 +117,25 @@ const initializeCharacterData = (playerId) => {
       notes: String,
     })
   })
-  magicArtsRow.map((mArt) => character.magicalArts.push({
-    exp: Number,
-    art: mArt,
-    score: Number,
-  }))
-  familiarCharacteristicsRow.map((fChr) => character.familiar.characteristics.push({
-    characteristic: fChr,
-    score: Number,
-  }))
-  familiarStatsRow.map((fStat) => character.familiar.stats.push({
-    stat: fStat,
-    score: Number,
-  }))
+  magicArtsRow.map((mArt) =>
+    character.magicalArts.push({
+      exp: Number,
+      art: mArt,
+      score: Number,
+    })
+  )
+  familiarCharacteristicsRow.map((fChr) =>
+    character.familiar.characteristics.push({
+      characteristic: fChr,
+      score: Number,
+    })
+  )
+  familiarStatsRow.map((fStat) =>
+    character.familiar.stats.push({
+      stat: fStat,
+      score: Number,
+    })
+  )
   return character
 }
 

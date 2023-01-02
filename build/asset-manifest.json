@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.js": "/static/js/main.d3b4c10d.js",
-    "static/media/arm-snakes.png": "/static/media/arm-snakes.9392fc078b95ef5ff294.png",
+    "main.js": "/static/js/main.9377fea5.js",
+    "static/media/throne.png": "/static/media/throne.4df2eb367894884b8071.png",
+    "static/media/parchment.png": "/static/media/parchment.87c95f9e319f53a3e14f.png",
+    "static/media/dragonCastle.png": "/static/media/dragonCastle.e5bd99de0085eb3ebbd3.png",
+    "static/media/king.png": "/static/media/king.bd7ff2ef83010001f523.png",
+    "static/media/castle.png": "/static/media/castle.0c5476be5d4292854e7d.png",
     "static/media/AMbackground.jpg": "/static/media/AMbackground.69600c8761e638426382.jpg",
-    "static/media/arm5-logo-grey.png": "/static/media/arm5-logo-grey.bfccbdc621fa44a25327.png",
+    "static/media/arm5-logo-grey.png": "/static/media/arm5-logo-grey.94c72f669fdd5ae315bb.png",
     "index.html": "/index.html",
-    "main.d3b4c10d.js.map": "/static/js/main.d3b4c10d.js.map"
+    "main.9377fea5.js.map": "/static/js/main.9377fea5.js.map"
   },
   "entrypoints": [
-    "static/js/main.d3b4c10d.js"
+    "static/js/main.9377fea5.js"
   ]
 }

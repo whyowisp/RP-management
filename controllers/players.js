@@ -34,7 +34,7 @@ playerRouter.put('/:id', async (req, res) => {
   const { id } = req.params
   const updatedPlayer = await Player.findByIdAndUpdate(id, req.body, {
     new: true,
-  })
+  }).populate('currentCampaign')
   res.status(200).json(updatedPlayer)
 })
 
