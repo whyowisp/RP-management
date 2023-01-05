@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const covenantSchema = new Schema({
+  //COVENANT RECORDS
   campaign: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Campaign',
@@ -155,6 +156,177 @@ const covenantSchema = new Schema({
   yearlyExpenditure: [], //init by covenantDataInitializer()
   costSavings: [], //init by -"-
   calendar: [], //init by -"-
+
+  //LIBRARY RECORDS
+  magicalBooks: [
+    {
+      book: String,
+      author: String,
+      year: String,
+      bookType: String,
+      artAbility: String,
+      level: Number,
+      quality: Number,
+      notes: String,
+    },
+  ],
+  laboratoryTexts: [
+    {
+      text: String,
+      author: String,
+      arts: String,
+      level: Number,
+      rdt: String,
+      notes: String,
+    },
+  ],
+  mundaneBooks: [
+    {
+      book: String,
+      author: String,
+      year: String,
+      bookType: String,
+      ability: String,
+      level: Number,
+      quality: Number,
+      notes: String,
+    },
+  ],
+
+  //LABORATORY RECORDS
+  laboratories: [
+    {
+      owner: String,
+      location: String,
+      floor: String,
+      points: Number,
+      sanctumMarkerNames: String,
+      size: String,
+      quality: String,
+      safety: String,
+      health: String,
+      refinement: String,
+      upkeep: String,
+      warping: String,
+      aesthetics: String,
+      virtuesFlaws: {
+        majorvirtues: String,
+        minorVirtues: String,
+        freeVirtues: String,
+        majorFlaws: String,
+        minorFlaws: String,
+        freeFlaws: String,
+      },
+      specializations: [
+        {
+          activity: String,
+          specialization: String,
+          score: Number,
+          technique: String,
+          specialization: String,
+          score: Number,
+          form: String,
+          specialization: String,
+          score: Number,
+        },
+      ],
+      personalityTraits: [
+        {
+          trait: String,
+          score: Number,
+          notes: String,
+        },
+      ],
+      features: [
+        {
+          feature: String,
+          focus: String,
+          bonus: Number,
+          location: String,
+          description: String,
+        },
+      ],
+      magicItems: [
+        {
+          item: String,
+          effect: String,
+          arts: String,
+          level: Number,
+          rdt: String,
+          uses: String,
+          description: String,
+        },
+      ],
+      sanctumChambers: [
+        {
+          chamber: String,
+          floor: String,
+          area: String,
+          description: String,
+        },
+      ],
+    },
+  ],
+
+  //VIS RECORDS
+  visSources: [
+    {
+      source: String,
+      arts: String,
+      pawns: String,
+      harvestTime: String,
+      description: String,
+      notes: String,
+    },
+  ],
+  visStores: [], //init by covenantDataInitializer()
+
+  //YEARLY SUMMARY RECORDS
+  yearlySummaries: [
+    {
+      covenant: String,
+      year: Number,
+      inhabitants: {
+        startLoyaltyPoints: Number,
+        endLoyaltyPoints: Number,
+        prevailingLoyaltyScore: Number,
+        loyaltyPointsGained: Number,
+        loyaltyPointsLost: Number,
+        familiarityGain: String, //Number? String?
+        arrivalsBirths: Number,
+        departuresDeaths: Number, //cold numbers
+      },
+      wealth: {
+        incomeModifiersApplied: String,
+        totalIncome: Number,
+        fixedExpenditure: Number,
+        sundryExpensesTotal: Number, //calculated
+        inflation: Number,
+        //totalExpenditure: Number //calculated
+        sundryExpenses: String,
+        startingTreasury: Number,
+        endingTreasury: Number,
+        //surplusDeficit: Number //calculated
+      },
+      eventsAdventures: [
+        {
+          season: String,
+          event: String,
+          characters: String,
+          notes: String,
+        },
+      ],
+      seasonalActivities: [
+        {
+          character: String,
+          winter: String,
+          spring: String,
+          summer: String,
+          autumn: String,
+        },
+      ],
+    },
+  ],
 })
 
 covenantSchema.set('toJSON', {

@@ -20,67 +20,49 @@ const featureNames = [
 
 const expenditures = [
   {
-    type: 'Buildings',
+    expenditureType: 'Buildings',
     summary: '1 pound per 10 pts. Inhabitants',
     savingLimit: '50% per craft',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Consumables',
+    expenditureType: 'Consumables',
     summary: '2 pounds per 10 pts. Inhabitants',
     savingLimit: '20% per craft',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Inflation',
+    expenditureType: 'Inflation',
     summary: 'increases yearly',
     savingLimit: '',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Laboratories',
+    expenditureType: 'Laboratories',
     summary: '1 pound per 10 pts. Laboratories',
     savingLimit: '20% per craft',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Provisions',
+    expenditureType: 'Provisions',
     summary: '5 pounds per 10 pts. Inhabitants',
     savingLimit: '50% + 20% per craft',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Titles',
+    expenditureType: 'Titles',
     summary: 'debt and taxes',
     savingLimit: '',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Wages',
+    expenditureType: 'Wages',
     summary: '2 ppints per 10 pts. Inhabitants',
     savingLimit: '',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Weapons and Armor',
+    expenditureType: 'Weapons and Armor',
     summary: '1 pound per 320 points Weapons and Armor',
     savingLimit: '50% per craft',
-    expenditure: Number,
-    notes: String,
   },
   {
-    type: 'Writing Materials',
+    expenditureType: 'Writing Materials',
     summary: '1 pound per Magus and book specialist',
     savingLimit: '50% per craft',
-    expenditure: Number,
-    notes: String,
   },
 ]
 
@@ -115,6 +97,24 @@ const savings = [
   },
 ]
 
+const arts = [
+  'Creo',
+  'Intellego',
+  'Muto',
+  'Perdo',
+  'Rego',
+  'Animal',
+  'Aquam',
+  'Auram',
+  'Corpus',
+  'Herbam',
+  'Ignem',
+  'Imaginem',
+  'Mentem',
+  'Terram',
+  'Vim',
+]
+
 const seasons = ['Winter', 'Spring', 'Summer', 'Autumn']
 
 const initializeCovenantData = (campaignId) => {
@@ -140,7 +140,13 @@ const initializeCovenantData = (campaignId) => {
   )
 
   expenditures.forEach((expenditure) =>
-    covenant.yearlyExpenditure.push(expenditure)
+    covenant.yearlyExpenditure.push({
+      expenditureType: expenditure.expenditureType,
+      summary: expenditure.summary,
+      savingLimit: expenditure.savingLimit,
+      expenditure: Number,
+      notes: String,
+    })
   )
 
   seasons.forEach((season) =>
@@ -157,6 +163,15 @@ const initializeCovenantData = (campaignId) => {
 
   savings.forEach((saving) => covenant.costSavings.push(saving))
 
+  arts.forEach((art) =>
+    covenant.visStores.push({
+      art: art,
+      pawns: Number,
+      physicalForm: String,
+      notes: String,
+      totalPawns: Number,
+    })
+  )
   return covenant
 }
 
