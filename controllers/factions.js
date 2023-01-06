@@ -21,7 +21,7 @@ factionRouter.get('/all', async (req, res) => {
 })
 
 factionRouter.post('/new', async (req, res) => {
-  const { campaignId, title, factionType } = req.body
+  const { campaignId, title } = req.body
 
   if (!campaignId) {
     return res.status(401).json({
@@ -33,7 +33,6 @@ factionRouter.post('/new', async (req, res) => {
   const newFaction = new Faction({
     campaign: campaign.id,
     title: title,
-    factionType: factionType,
   })
 
   const faction = await newFaction.save()
