@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose
 
-const characterSchema = new Schema(
+const npcSchema = new Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,47 +17,31 @@ const characterSchema = new Schema(
       ref: 'Faction',
     },
     visibility: { type: String, default: 'visible' },
-    isMagus: { type: Boolean, default: false },
+    isCreature: false, // npc/creature boolean
     name: String,
-    player: String,
-    saga: String, //This could be changed to campaign
-    setting: String,
-    currentYear: Number,
-    house: String,
+    might: String,
     age: String,
+    born: String,
     size: Number,
     confidence: String,
-    decrepitude: {
-      effectsOfAging: [String],
-    },
-    warping: {
-      effectsOfWarping: [String],
-    },
-    descriptiveAttributes: [], //*
-    characteristics: [], //*
-    virtues: [String],
-    flaws: [String],
+    characteristics: [], //initialized by npcDataInitializer
+    virtuesAndFlaws: [String],
     abilities: [
       {
-        experience: Number,
         ability: String,
-        specialty: String,
         score: Number,
       },
     ],
     personalityTraits: [{ description: String, score: Number }],
-    // type is reserved word but here's workaround
     reputations: [
       { description: String, type: { type: String }, score: Number },
     ],
     combat: {
       armor: { type: String, default: '' },
-      modifiers: { type: String, default: '' },
       soak: { type: Number, default: 0 },
-      load: { type: Number, default: 0 },
     },
-    fatigue: [],
-    wounds: [],
+    fatigue: [], //*)
+    wounds: [], //*)
     // Change weapon property later as { type: mongoose.Schema.Types.ObjectId, ref: 'Weapon'},
     weapons: [
       {
@@ -71,35 +55,16 @@ const characterSchema = new Schema(
       },
     ],
     equipment: [{ item: String, load: Number }],
+    //depiction sub property would be 'appearance'
     depiction: { depiction: String, notes: String },
-    magicalArts: [],
-    castingTotals: [Number],
-    lab: Number,
-    longevity: {
-      labTotal: Number,
-      ageRollModifier: Number,
-      twilightScars: String,
-    },
     vis: [{ art: String, pawns: Number, physicalForm: String }],
-    familiar: {
-      characteristics: [],
-      stats: [],
-      cords: { bronze: Number, silver: Number, gold: Number },
-      bondQAndA: [String],
-    },
-    spells: [
+    powers: [
       {
-        spell: String,
-        form: String,
-        technique: String,
-        level: Number,
-        bonus: String, // Note! String or Number???
-        range: String,
-        duration: String,
-        target: String,
-        exp: Number,
-        mastery: Number,
-        notes: String,
+        title: String,
+        cost: String,
+        iniative: Number,
+        art: String,
+        description: String,
       },
     ],
   },
@@ -107,4 +72,4 @@ const characterSchema = new Schema(
   { strict: 'throw' }
 )
 
-module.exports = mongoose.model('Character', characterSchema)
+module.exports = mongoose.model('Npc', npcSchema)

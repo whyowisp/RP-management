@@ -51,7 +51,7 @@ const expenditures = [
   },
   {
     expenditureType: 'Wages',
-    summary: '2 ppints per 10 pts. Inhabitants',
+    summary: '2 points per 10 pts. Inhabitants',
     savingLimit: '',
   },
   {
@@ -117,10 +117,11 @@ const arts = [
 
 const seasons = ['Winter', 'Spring', 'Summer', 'Autumn']
 
-const initializeCovenantData = (campaignId) => {
+const initializeCovenantData = (campaignId, title) => {
   const covenant = new Covenant({})
 
   covenant.campaign = campaignId
+  covenant.covenantName = title
 
   resourceNames.forEach((rName) =>
     covenant.buildPoints.resources.push({
@@ -136,6 +137,8 @@ const initializeCovenantData = (campaignId) => {
       feature: fName,
       name: String,
       notes: String,
+      secondName: String,
+      secondNotes: String,
     })
   )
 

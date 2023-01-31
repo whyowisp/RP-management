@@ -1,4 +1,5 @@
 const Character = require('../models/character')
+const Npc = require('../models/npc')
 
 const characteristicTitles = [
   'Intelligence',
@@ -61,7 +62,7 @@ const magicArtsRow = [
   'Vim',
 ]
 
-const familiarCharacteristicsRow = [
+const shortenedCharacteristicsRow = [
   'Int/Cun',
   'Per',
   'Str',
@@ -124,7 +125,7 @@ const initializeCharacterData = (playerId, campaignId) => {
       score: Number,
     })
   )
-  familiarCharacteristicsRow.map((fChr) =>
+  shortenedCharacteristicsRow.map((fChr) =>
     character.familiar.characteristics.push({
       characteristic: fChr,
       score: Number,
@@ -139,6 +140,41 @@ const initializeCharacterData = (playerId, campaignId) => {
   return character
 }
 
+const initializeNPCData = (playerId, campaignId, isCreature) => {
+  console.log('IsCreature?: ' + isCreature)
+  const npc = new Npc({})
+  npc.owner = playerId
+  npc.campaign = campaignId
+  npc.isCreature = isCreature
+  shortenedCharacteristicsRow.map((cTitle) =>
+    npc.characteristics.push({
+      characteristic: cTitle,
+      score: Number,
+    })
+  )
+  const npcFatigueDataRow = fatigueDataRow.slice(1)
+  npcFatigueDataRow.forEach((fData) => {
+    npc.fatigue.push({
+      range: String,
+      checked: [false],
+      penalty: fData.penalty,
+      level: fData.title,
+      notes: String,
+    })
+  })
+  woundDataRow.forEach((wData) => {
+    npc.wounds.push({
+      title: wData.title,
+      range: String,
+      checked: [false, false, false, false, false],
+      notes: String,
+      penalty: wData.penalty,
+    })
+  })
+  return npc
+}
+
 module.exports = {
   initializeCharacterData,
+  initializeNPCData,
 }

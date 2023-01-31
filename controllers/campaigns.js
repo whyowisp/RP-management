@@ -36,13 +36,12 @@ campaignRouter.post('/new', async (req, res) => {
   res.status(201).json(campaign)
 })
 
-//Write next
 campaignRouter.put('/:id', async (req, res) => {
-  // requestHistory.push({ id: req.params.id, body: req.body })
   const { id } = req.params
-  const updatedCampaign = await Campaign.findByIdAndUpdate(id, req.body)
+  const updatedCampaign = await Campaign.findByIdAndUpdate(id, req.body, {
+    new: true,
+  })
   res.status(200).json(updatedCampaign)
-  // console.log('requestHistory: ' + JSON.stringify(requestHistory))
 })
 
 /*

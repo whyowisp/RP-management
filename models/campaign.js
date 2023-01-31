@@ -40,12 +40,13 @@ const campaignSchema = new Schema({
       ref: 'Faction',
     },
   ],
-  /* covenants: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-          ref: Covenant,
-        }
-    ], */
+  groups: [
+    {
+      name: String,
+      playerId: String,
+      characters: [],
+    },
+  ],
 })
 
 campaignSchema.set('toJSON', {

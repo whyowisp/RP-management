@@ -14,6 +14,7 @@ const loginRouter = require('./controllers/login')
 const campaignRouter = require('./controllers/campaigns')
 const factionRouter = require('./controllers/factions')
 const covenantRouter = require('./controllers/covenants')
+const npcsRouter = require('./controllers/npcs')
 
 // PORT in production (fly chooses) || PORT in local environment
 // (falls to this unless defined in process.env)
@@ -42,6 +43,7 @@ app.use('/api/login', loginRouter)
 app.use('/api/campaigns', campaignRouter)
 app.use('/api/factions', factionRouter)
 app.use('/api/covenants', covenantRouter)
+app.use('/api/npcs', npcsRouter)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

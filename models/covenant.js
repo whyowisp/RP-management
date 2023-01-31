@@ -133,7 +133,7 @@ const covenantSchema = new Schema({
       pointsPerItem: Number,
       quantity: String,
       notes: String,
-      points: Number,
+      points: Number, //calculated
     },
   ],
   wealth: {
@@ -148,7 +148,7 @@ const covenantSchema = new Schema({
     {
       source: String,
       description: String,
-      type: String,
+      incomeType: String,
       income: String,
       notes: String,
     },
@@ -174,6 +174,7 @@ const covenantSchema = new Schema({
     {
       text: String,
       author: String,
+      year: String,
       arts: String,
       level: Number,
       rdt: String,
@@ -210,26 +211,36 @@ const covenantSchema = new Schema({
       warping: String,
       aesthetics: String,
       virtuesFlaws: {
-        majorvirtues: String,
+        majorVirtues: String,
         minorVirtues: String,
         freeVirtues: String,
         majorFlaws: String,
         minorFlaws: String,
         freeFlaws: String,
       },
-      specializations: [
-        {
-          activity: String,
-          specialization: String,
-          score: Number,
-          technique: String,
-          specialization: String,
-          score: Number,
-          form: String,
-          specialization: String,
-          score: Number,
-        },
-      ],
+      specializations: {
+        activitySpecs: [
+          {
+            activity: String,
+            specialization: String,
+            score: Number,
+          },
+        ],
+        techSpecs: [
+          {
+            technique: String,
+            specialization: String,
+            score: Number,
+          },
+        ],
+        formSpecs: [
+          {
+            form: String,
+            specialization: String,
+            score: Number,
+          },
+        ],
+      },
       personalityTraits: [
         {
           trait: String,
@@ -292,15 +303,15 @@ const covenantSchema = new Schema({
         prevailingLoyaltyScore: Number,
         loyaltyPointsGained: Number,
         loyaltyPointsLost: Number,
-        familiarityGain: String, //Number? String?
+        familiarityGain: Number,
         arrivalsBirths: Number,
-        departuresDeaths: Number, //cold numbers
+        departuresDeaths: Number,
       },
       wealth: {
         incomeModifiersApplied: String,
         totalIncome: Number,
         fixedExpenditure: Number,
-        sundryExpensesTotal: Number, //calculated
+        sundryExpensesTotal: Number,
         inflation: Number,
         //totalExpenditure: Number //calculated
         sundryExpenses: String,

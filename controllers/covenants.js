@@ -1,4 +1,5 @@
 const covenantRouter = require('express').Router()
+const Covenant = require('../models/covenant')
 const Campaign = require('../models/campaign')
 
 const { initializeCovenantData } = require('../utils/covenantDataInitializer')
@@ -9,13 +10,7 @@ covenantRouter.get('/:id', async (req, res) => {
   res.json(covenant)
 })
 
-covenantRouter.get('/', async (req, res) => {
-  const covenants = await Covenant.find({})
-  // console.log(Covenants)
-  res.json(covenants)
-})
-
-//Get all by campaignId
+//Get (all) by CampaignId
 covenantRouter.get('/byCampaignId/:id', async (req, res) => {
   const covenants = await Covenant.find({ campaign: req.params.id })
   res.json(covenants)
@@ -23,8 +18,16 @@ covenantRouter.get('/byCampaignId/:id', async (req, res) => {
 
 // Initializes and prefills new covenant document and returns it
 covenantRouter.post('/new', async (req, res) => {
-  const campaign = await Campaign.findById(req.body.campaignId)
-  const covenant = await initializeCovenantData(campaign.id)
+  const { campaignId, title } = req.body
+
+  if (!campaignId) {
+    return res.status(401).json({
+      error: `request missing data, request body: ${JSON.stringify(req.body)}`,
+    })
+  }
+
+  const campaign = await Campaign.findById(campaignId)
+  const covenant = await initializeCovenantData(campaign.id, title)
 
   // console.log(covenant)
   const newCovenant = await covenant.save()
@@ -32,13 +35,72 @@ covenantRouter.post('/new', async (req, res) => {
 })
 
 covenantRouter.put('/:id', async (req, res) => {
-  // requestHistory.push({ id: req.params.id, body: req.body })
   const { id } = req.params
   const updatedCovenant = await Covenant.findByIdAndUpdate(id, req.body, {
     new: true,
   })
   res.status(200).json(updatedCovenant)
-  // console.log('requestHistory: ' + JSON.stringify(requestHistory))
+})
+
+covenantRouter.post('/newLab/:covenantId', async (req, res) => {
+  const covenant = await Covenant.findById(req.params.covenantId)
+
+  const updatedLaboratories = covenant.laboratories.concat({})
+  console.log(covenant.id)
+  const updatedCovenant = await Covenant.findByIdAndUpdate(
+    covenant.id,
+    {
+      $set: { laboratories: updatedLaboratories },
+    },
+    {
+      new: true,
+    }
+  )
+  res.status(200).end()
+})
+
+//Update single yearly summary
+covenantRouter.put('/:covenantId/:summaryId', async (req, res) => {
+  const { covenantId, summaryId } = req.params
+  const editedSummary = req.body
+
+  //Which covenant
+  const covenant = await Covenant.findById(covenantId)
+
+  const editedSummaries = covenant.yearlySummaries.map((summary) =>
+    summary._id.toString() === summaryId ? editedSummary : summary
+  )
+
+  const updatedCovenant = await Covenant.findByIdAndUpdate(
+    covenantId,
+    { $set: { yearlySummaries: editedSummaries } },
+    {
+      new: true,
+    }
+  )
+  res.status(200).end()
+})
+
+//Update single laboratory
+covenantRouter.put('/:covenantId/:labId', async (req, res) => {
+  const { covenantId, labId } = req.params
+  const editedLaboratory = req.body
+
+  //Which covenant
+  const covenant = await Covenant.findById(covenantId)
+
+  const editedLabs = covenant.laboratories.map((lab) =>
+    lab._id.toString() === labId ? editedLaboratory : lab
+  )
+
+  const updatedCovenant = await Covenant.findByIdAndUpdate(
+    covenantId,
+    { $set: { laboratories: editedLabs } },
+    {
+      new: true,
+    }
+  )
+  res.status(200).end()
 })
 
 covenantRouter.delete('/:id', async (req, res) => {
