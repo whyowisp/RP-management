@@ -1,4 +1,6 @@
-const npcsRouter = require('express').Router()
+const mongoose = require('mongoose')
+npcsRouter = require('express').Router()
+const { getMaxListeners } = require('../models/campaign')
 const Campaign = require('../models/campaign')
 const Npc = require('../models/npc')
 const Player = require('../models/player')
@@ -32,8 +34,23 @@ npcsRouter.post('/new', async (req, res) => {
     req.body.isCreature
   )
 
-  // console.log(npc)
   const newNpc = await npc.save()
+  res.status(201).json(newNpc)
+})
+
+//Initializes and prefills new npc document from existing npc and returns it
+npcsRouter.post('/newFromExisting', async (req, res) => {
+  const player = await Player.findById(req.body.playerId)
+  const campaign = await Campaign.findById(req.body.campaignId)
+  //new npc object
+  const npc = {
+    ...req.body.npc,
+    owner: player.id,
+    campaign: campaign.id,
+    _id: new mongoose.Types.ObjectId(),
+  }
+
+  const newNpc = await new Npc(npc).save()
   res.status(201).json(newNpc)
 })
 

@@ -1,4 +1,4 @@
-# fly.toml file generated for rpmtool on 2022-10-08T16:21:32+03:00
+# fly.toml file generated for rpmtool on 2023-06-01T19:52:48+03:00
 
 app = "rpmtool"
 kill_signal = "SIGINT"
@@ -12,8 +12,10 @@ processes = []
   PORT = "8080"
 
 [experimental]
-  allowed_public_ports = []
   auto_rollback = true
+  cmd = []
+  entrypoint = []
+  exec = []
 
 [[services]]
   http_checks = []

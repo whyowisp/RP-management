@@ -16,8 +16,15 @@ const npcSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Faction',
     },
-    visibility: { type: String, default: 'visible' },
+    visibility: {
+      type: String,
+      default: 'visible',
+      enum: ['visible', 'hidden', 'disabled'],
+    },
     isCreature: false, // npc/creature boolean
+    group: String, //which group npc belongs to
+    copy: { type: Boolean, default: false }, //if npc is a copy of another npc
+    showCombatStats: { type: Boolean, default: false },
     name: String,
     might: String,
     age: String,

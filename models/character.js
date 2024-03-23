@@ -53,8 +53,8 @@ const characterSchema = new Schema(
     combat: {
       armor: { type: String, default: '' },
       modifiers: { type: String, default: '' },
-      soak: { type: Number, default: 0 },
-      load: { type: Number, default: 0 },
+      soak: { type: String, default: '0' },
+      load: { type: String, default: '0' },
     },
     fatigue: [],
     wounds: [],
