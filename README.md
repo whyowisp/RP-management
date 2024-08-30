@@ -13,4 +13,4 @@ Simply put, RPMT answers the need of managing tabletop roleplaying campaigns; th
 [Work Hours 05.01.2023](https://github.com/whyowisp/RP-management/blob/main/docs/work_hours.md)<br>
 [Data Model](https://github.com/whyowisp/RP-management/blob/main/docs/rpmt-datamodel.png)<br>
 
-[Current development version: https://rpmtool.fly.dev/](https://rpmtool.fly.dev/)
+[Current development version: https://rpmtool.azurewebsites.net/](https://rpmtool.azurewebsites.net/)
