@@ -21,7 +21,7 @@ const npcSchema = new Schema(
       default: 'visible',
       enum: ['visible', 'hidden', 'disabled'],
     },
-    isCreature: false, // npc/creature boolean
+    isCreature: { type: Boolean, default: false }, // npc/creature boolean
     group: String, //which group npc belongs to
     copy: { type: Boolean, default: false }, //if npc is a copy of another npc
     showCombatStats: { type: Boolean, default: false },
